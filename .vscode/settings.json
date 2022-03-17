@@ -5,6 +5,8 @@
         "string": "cpp",
         "iosfwd": "cpp",
         "algorithm": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "map": "cpp",
+        "iostream": "cpp"
     }
 }
