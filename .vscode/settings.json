@@ -7,6 +7,11 @@
         "algorithm": "cpp",
         "xutility": "cpp",
         "map": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "random": "cpp",
+        "hash_map": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp"
     }
 }
