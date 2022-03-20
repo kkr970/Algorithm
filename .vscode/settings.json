@@ -12,6 +12,7 @@
         "hash_map": "cpp",
         "*.tcc": "cpp",
         "deque": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "type_traits": "cpp"
     }
 }
