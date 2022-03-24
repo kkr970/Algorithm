@@ -16,6 +16,7 @@
         "type_traits": "cpp",
         "cmath": "cpp",
         "array": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "initializer_list": "cpp"
     }
 }
