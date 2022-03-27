@@ -3,61 +3,63 @@
 #include <queue>
 #include <algorithm>
 
-#include <iostream>
-
 using namespace std;
 
 
 int solution(int n, vector<vector<int>> edge) {
     int answer = 0;
-    int distance = 1;
-    int fartest = 1;
-    int* isVisited = new int[n + 1]{0};
     
+    vector<vector<int>> graph(n+1);
+    vector<int> distance(n+1, -1);
+    queue<int> q;
+
     for(int i = 0 ; i < edge.size() ; i++)
-        sort(edge[i].begin(), edge[i].end());
-    sort(edge.begin(), edge.end());
+    {
+        int from = edge[i][0];
+        int to = edge[i][1];
 
-    //<노드, 거리>
-    queue<pair<int, int>> q;
+        graph[from].push_back(to);
+        graph[to].push_back(from);
+    }
 
-    q.push(make_pair(1, distance));
-    isVisited[1] = distance;
+    distance[1] = 0;
+    q.push(1);
+
     while(!q.empty())
     {
-        pair<int, int> cur_node = q.front();
-        if( distance != q.front().second )
-            distance++;
+        int cur_node = q.front();
         q.pop();
 
-        for(vector<int> temp : edge)
+        for(int next : graph[cur_node])
         {
-            if( isVisited[temp[1]] == 0 && temp[0] == cur_node.first )
+            if(distance[next] == -1)
             {
-                if(fartest == distance)
-                    fartest++;
-                isVisited[temp[1]] = distance + 1;
-                q.push(make_pair(temp[1], distance + 1));
+                //현재 노드까지의 거리 + 1을 저장함
+                dist[next] = dist[current] + 1;
+                q.push(next);
             }
-            if(temp[0] > cur_node.first)
-                break;
         }
     }
 
-    for(int i = 1 ; i < n + 1 ; i++)
-        if(isVisited[i] == fartest)
+    int fartest = *max_element(distance.begin(), distance.end());
+
+    for(int i = 0 ; i < distance.size() ; i++)
+    {
+        if(distance[i] == fartest)
             answer++;
+    }
 
     return answer;
 }
 //https://programmers.co.kr/learn/courses/30/lessons/49189
 
 /*
-생각
-1번 노드와 가장 멀리 떨어진 노드의 수
-BFS를 사용해서, 각 노드에 해당하는 거리를 계산
-방법1) 새로운 배열을 생성해서 index=노드번호 를 이용, 각 index에 거리를 저장
-    최대 거리인 index의 수를 반환
-방법2) 각 bfs를 레벨당 저장해서 최대 레벨에 해당하는 노드의 수를 반환
+배울 점
+그래프에 대해 기초적인 내용을 사용한 문제
+그래프에 관한 내용을 공부해야 할 듯
+
+그래프는 벡터를 사용해 노드에서 연결되어진 노드를 저장함
+vector distance를 만들어서 각 index == node번호, value는 거리를 저장하였음
+queue를 사용해 BFS, q는 노드의 번호만 사용하였음
 
 */
