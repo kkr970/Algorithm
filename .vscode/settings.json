@@ -18,6 +18,7 @@
         "array": "cpp",
         "utility": "cpp",
         "initializer_list": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "set": "cpp"
     }
 }
