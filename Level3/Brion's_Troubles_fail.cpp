@@ -1,5 +1,6 @@
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <iostream>
 
@@ -231,9 +232,12 @@ int main(){
     testcase.push_back("aAcAcAabBdBdBb");
 
     testcase.push_back("");
-    testcase.push_back("A A");
-    testcase.push_back("aa");
-    testcase.push_back("AAaAA");
+    testcase.push_back("AAA");
+    testcase.push_back("AaA");
+    testcase.push_back("aAAAa");
+    testcase.push_back("bAaAaAb");
+
+    testcase.push_back("cAaAaABbBbBc");
 
     for (int i = 0; i < testcase.size(); ++i)
     { 
@@ -277,9 +281,8 @@ int main(){
 
 모든 단어를 변환한 뒤, answer저장, return;
 
-문장이 나올 수 있는 경우의 수
+올바른 문장이 나올 수 있는 경우의 수
 단어의 경우 : 없음 규칙1, 규칙2, 규칙12
-
 없음-없음  AAA,BBB
 없음-규칙1 AAA,BbBbB
 없음-규칙2 AAA,bBBBb
@@ -300,10 +303,16 @@ int main(){
 규칙12-규칙2 aAcAcAa,bBBBb
 규칙12-규칙12 aAcAcAa,bBdBdBb
 
+단어가 없음  ""
+없음        AAA
+규칙1       AaAaA
+규칙2       aAAAa
+규칙12      bAaAaAb
+
 invalid
--문장에 공백이 있는 경우
--하나의 규칙을 같은 단어에 사용한 경우
--특수 기호를 여러번 쓴 경우
--규칙1은 모든 단어에 사용되야함
--규칙2는 하나의 단어에 사용되어야 함
+-문장에 공백이 있는 경우                A A
+-하나의 규칙을 같은 단어에 사용한 경우   abAAba
+-특수 기호를 여러번 쓴 경우             aAAaBaBaB
+-규칙1은 단어의 모든 문자에 적용해야 함  HaEaLaLObWORLDb , HELLO WORLD일 경우 invalid이지만, HELL O WORLD일 경우 통과
+-규칙2는 하나의 단어에 사용되어야 함     cAaAaABbBbBc
 */
