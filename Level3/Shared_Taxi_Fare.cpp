@@ -64,7 +64,7 @@ int solution(int n, int s, int a, int b, vector<vector<int>> fares) {
         graph[fare[1]].push_back(make_pair(fare[2], fare[0]));
     }
 
-    //s지점에서 시작하는 다익스트라 알고리즘, 합승할 위치까지의 가중치를 얻기 위함
+    //s지점에서 시작하는 1 다익스트라 알고리즘, 합승할 위치까지의 가중치를 얻기 위함
     vector<int> weight1(n+1, 100001 * n);
     weight1[s] = 0;
     priority_queue<pair<int, int>> pq1; // <가중치, 노드>
@@ -88,7 +88,7 @@ int solution(int n, int s, int a, int b, vector<vector<int>> fares) {
     //합승할 노드의 위치
     for(int i = 1 ; i <= n ; i++)
     {
-        //합승지점에서 시작하는 다익스트라 알고리즘, 각자 위치 까지의 가중치를 얻기 위함
+        //합승지점에서 시작하는 2 다익스트라 알고리즘, 각자 위치 까지의 가중치를 얻기 위함
         vector<int> weight2(n+1, 100001 * n);
         weight2[i] = 0;
         priority_queue<pair<int, int>> pq2; // <가중치, 노드>
@@ -137,7 +137,7 @@ int solution(int n, int s, int a, int b, vector<vector<int>> fares) {
     //합승할 노드의 위치
     for(int i = 1 ; i <= n ; i++)
     {
-        //합승지점에서 시작하는 다익스트라 알고리즘, 각자 위치 까지의 가중치를 얻기 위함
+        //합승지점에서 시작하는 다익스트라 알고리즘, a, b, s 까지의 가중치를 얻기 위함
         vector<int> weight(n+1, 100001 * n);
         weight[i] = 0;
         priority_queue<pair<int, int>> pq; // <가중치, 노드>
